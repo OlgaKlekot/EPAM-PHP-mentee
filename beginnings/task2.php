@@ -9,15 +9,29 @@
 </head>
 <body>
 <?php
-    $Twinkle = 'Twinkle';
+    $twinkle = 'Twinkle';
     $star = 'star';
 
-    echo "$Twinkle, $Twinkle little $star.";
+    echo "$twinkle, $twinkle little $star.";
 ?>
 <br>
-<?= "$Twinkle, $Twinkle little $star."; ?>
+<?= "$twinkle, $twinkle little $star, and other ${star}s too."; ?>
+<br>
+<?= "${star}s" ?>
+<br>
+<?php
 
-<?= "${$star}s" ?>
+$bat = 'bat';
+$bat1 = 'Bat';
+$wing = 'wing';
+$mammal = 'mammal';
+echo "${bat1}s are the only ${mammal}s capable of true flight. 
+With extremely elongated fingers and a $wing membrane stretched between, 
+the ${bat}’s ${wing}s anatomically resemble the human hands. 
+Almost 1,000 $bat species can be found worldwide. 
+In fact, ${bat}s make up a quarter of all $mammal species on earth!";
+
+?>
 </body>
 </html>
 
