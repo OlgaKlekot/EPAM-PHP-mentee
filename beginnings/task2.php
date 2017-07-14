@@ -25,11 +25,13 @@ $bat = 'bat';
 $bat1 = 'Bat';
 $wing = 'wing';
 $mammal = 'mammal';
-echo "${bat1}s are the only ${mammal}s capable of true flight. 
+echo <<<INFO
+${bat1}s are the only ${mammal}s capable of true flight. 
 With extremely elongated fingers and a $wing membrane stretched between, 
 the ${bat}’s ${wing}s anatomically resemble the human hands. 
 Almost 1,000 $bat species can be found worldwide. 
-In fact, ${bat}s make up a quarter of all $mammal species on earth!";
+In fact, ${bat}s make up a quarter of all $mammal species on earth!
+INFO;
 
 ?>
 </body>
