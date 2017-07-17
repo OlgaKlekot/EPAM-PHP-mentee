@@ -29,22 +29,23 @@
     </style>
 </head>
 <body>
+    <table>
+        <?php
+        for ($i = 1; $i <= 9; $i++): ?>
 
-<?php
-    echo '<table>';
-        for ($i = 1; $i <= 9; $i++) {
+            <tr>
+                <td> <?= $i ?> </td>
 
-            echo '<tr><td>' . $i . '</td>';
+                <?php
+                for ($j = 2; $j <= 9; $j++): ?>
 
-            for ($j = 2; $j <= 9; $j++) {
-                echo '<td>' . $j * $i . '</td>';
-            }
-            echo '</tr>';
-        }
-    echo '</table>';
+                <td> <?= $j * $i ?> </td>
+                <?php endfor; ?>
 
-?>
+            </tr>
+        <?php endfor; ?>
 
+    </table>
 </body>
 </html>
 
