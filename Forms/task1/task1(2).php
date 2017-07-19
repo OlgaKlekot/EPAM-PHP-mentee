@@ -15,13 +15,16 @@
     </style>
 </head>
 <body>
-    <?php
+<?php
+    if (isset($_POST['favoriteCity'])) {
         $city = $_POST['favoriteCity'];
-    ?>
-
+?>
     <h3>Your favorite city is
         <span class="city"><?= $city ?></span>!
     </h3>
+<?php
+    };
+?>
 
 </body>
 </html>
