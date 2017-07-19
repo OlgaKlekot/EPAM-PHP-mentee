@@ -24,14 +24,15 @@
 <body>
 
 <?php
-$city = $_POST['favoriteCity'];
-if (isset($_POST['favoriteCity']) && ($city != null)): ?>
+if (isset($_POST['favoriteCity'])) {
+    $city = $_POST['favoriteCity'];
+?>
 
     <h3>Your favorite city is
         <span class="city"><?= $city ?></span>!
     </h3>
 
-<?php else: ?>
+<?php } else { ?>
 
     <form method="post" id="formCity">
         <label for="city">Your favorite city: </label>
@@ -40,7 +41,7 @@ if (isset($_POST['favoriteCity']) && ($city != null)): ?>
         <input type="submit" name="submit" value="Ok">
     </form>
 
-<?php endif; ?>
+<?php } ?>
 
 </body>
 </html>
