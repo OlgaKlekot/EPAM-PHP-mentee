@@ -1,36 +1,3 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>books searching</title>
-    <style>
-        form {
-            margin: 15px 0;
-        }
-        input:not([type="submit"]) {
-            display: inline-block;
-            margin: 5px 0;
-            width: 200px;
-        }
-        table, td {
-            border: 1px solid;
-        }
-        td {
-            font-weight: bold;
-            line-height: 30px;
-            padding: 0 10px;
-        }
-        .bookName {
-            line-height: 40px;
-            font-size: 20px;
-        }
-    </style>
-</head>
-<body>
-
 <?php
 $books = [
     [
@@ -69,9 +36,7 @@ $books = [
         'price' => 8.18
     ]
 ];
-?>
 
-<?php
 if (isset($_GET['title'])) {
     $books = array_filter($books, function ($book) {
         return preg_match('/' . $_GET['title'] . '/i', $book['name']);
@@ -85,9 +50,40 @@ if (isset($_GET['title'])) {
         return isset($book['tags']) && is_array($book['tags']) && in_array($_GET['tag'], $book['tags']);
     });
 };
-
 ?>
 
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>books searching</title>
+    <style>
+        form {
+            margin: 15px 0;
+        }
+        input:not([type="submit"]) {
+            display: inline-block;
+            margin: 5px 0;
+            width: 200px;
+        }
+        table, td {
+            border: 1px solid;
+        }
+        td {
+            font-weight: bold;
+            line-height: 30px;
+            padding: 0 10px;
+        }
+        .bookName {
+            line-height: 40px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
 <header>
     <form>
         <input placeholder="Enter a book name" required name="title" />
@@ -95,31 +91,31 @@ if (isset($_GET['title'])) {
     </form>
 </header>
 <table>
-    <?php foreach ($books as $book) { ?>
+    <?php foreach ($books as $book): ?>
         <tr>
             <td>
                 <span class="bookName"><?= $book['name'] ?> </span><br />
                 Author: <a href="?author=<?= $book['author'] ?>"> <?= $book['author'] ?> </a><br />
-                <?php if (in_array($book['tags'], $book)) {
-                    echo 'Tags:';
-                    foreach ($book['tags'] as $tag) { ?>
+                <?php if (in_array($book['tags'], $book)): ?>
+                    Tags:
+                    <?php foreach ($book['tags'] as $tag): ?>
                         <a href="?tag=<?= $tag ?>"><?= $tag ?></a>
-                    <?php };
-                } ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
                 <br />
             </td>
             <td>
                 $<?= is_int($book['price']) ? sprintf('%d.00', $book['price']) : $book['price']; ?>
             </td>
         </tr>
-    <?php } ?>
+    <?php endforeach; ?>
 </table>
 
-<?php if (!empty($_GET)) { ?>
+<?php if (!empty($_GET)): ?>
     <form method="post" action="booksSearching.php">
         <input type="submit" name="back" value="back">
     </form>
- <?php } ?>
+ <?php endif; ?>
 
 </body>
 </html>
